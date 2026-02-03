@@ -51,7 +51,7 @@ def initialize_state(self):
     self.target_load_factor = 0.00
 
     self.scaled_iterations_enabled = True
-    self.scaled_min_iterations = 0
+    self.scaled_min_iterations = 50
     self.scaled_max_iterations = 1000
     self.scaled_min_zoom = 1.0
     self.scaled_max_zoom = 7.6e13
