@@ -1,6 +1,6 @@
 # Plasma Mandelbrot
 
-![Plasma Mandelbrot Screenshot](screenshot.jpg)
+![Plasma Mandelbrot Screenshot](Screenshot.jpg)
 
 **Plasma Mandelbrot** is a high-performance, modular fractal renderer featuring **OpenCL acceleration** and **adaptive GL overlays**. Designed with extensibility in mind, it allows for seamless addition of new fractal types and colorization algorithms.
 
