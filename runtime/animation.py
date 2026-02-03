@@ -1,6 +1,6 @@
 from PyQt6.QtCore import QTimer
 from .fps import update_fps
-from .iteration import update_iterations_from_zoom, adjust_iterations_by_scale
+from .iteration import update_iterations_from_zoom
 from .render_fractal import render_fractal
 
 def apply_zoom_at_point(x_min, x_max, y_min, y_max, zoom_factor, center_x, center_y, base_width):
@@ -76,7 +76,7 @@ def animation_step(self):
     if self.scaled_iterations_enabled:
         update_iterations_from_zoom(self)
     elif self.adapt_iterations:
-        adjust_iterations_by_scale(self)
+        self.adjust_iterations_by_scale()
         self.iterations_spinbox.setText(str(self.max_iterations))
     else:
         try:

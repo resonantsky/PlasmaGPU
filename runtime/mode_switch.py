@@ -10,7 +10,7 @@ def toggle_smooth_zoom(self, state):
     else:
         self.is_animating = False
 
-    render_fractal(self)
+    render_fractal(self.zoom_momentum)
 
 
 def reset_view(self):

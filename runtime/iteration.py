@@ -64,7 +64,7 @@ def update_iterations_from_zoom(self):
 
 def update_iterations(self, value):
     self.max_iterations = value
-    render_fractal(self)
+    self.render_fractal()
 
 def toggle_scaled_iterations(self, state):
     enabled = (state == Qt.CheckState.Checked.value)
@@ -75,9 +75,9 @@ def toggle_scaled_iterations(self, state):
     self.iterations_spinbox.setEnabled(not enabled)
 
     if enabled:
-        update_iterations_from_zoom(self)
+        self.update_iterations_from_zoom()
 
-    render_fractal(self)
+    self.render_fractal()
 
 def update_scaled_iterations(self):
     try:
@@ -88,8 +88,8 @@ def update_scaled_iterations(self):
         self.scaled_min_iterations = imin
         self.scaled_max_iterations = imax
 
-        update_iterations_from_zoom(self)
-        render_fractal(self)
+        self.update_iterations_from_zoom()
+        self.render_fractal()
 
     except ValueError:
         pass
