@@ -133,6 +133,7 @@ def setup_ui(self):
     self.auto_iter_checkbox = QCheckBox("Auto Iterations")
     self.auto_iter_checkbox.setChecked(self.scaled_iterations_enabled)
     self.auto_iter_checkbox.stateChanged.connect(self.toggle_scaled_iterations)
+    self.auto_iter_checkbox.setVisible(False)
     control_layout.addWidget(self.auto_iter_checkbox)
 
     main_layout.addWidget(control_container)

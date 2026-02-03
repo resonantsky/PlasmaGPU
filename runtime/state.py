@@ -43,14 +43,14 @@ def initialize_state(self):
     self.frame_time_history = []
     self.frame_time_history_size = 30
     self.frame_time_stable = True
-    self.adapt_iterations = True
+    self.adapt_iterations = False
     self.max_possible_iterations = 10000
     self.iteration_change_rate = 0.001
     self.last_adjustment_time = 0
     self.adjustment_cooldown = 500
     self.target_load_factor = 0.00
 
-    self.scaled_iterations_enabled = True
+    self.scaled_iterations_enabled = False
     self.scaled_min_iterations = 25
     self.scaled_max_iterations = 1000
     self.scaled_min_zoom = 1.0
