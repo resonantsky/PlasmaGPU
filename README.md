@@ -1,5 +1,7 @@
 # Plasma Mandelbrot
 
+![Plasma Mandelbrot Screenshot](screenshot.jpg)
+
 **Plasma Mandelbrot** is a high-performance, modular fractal renderer featuring **OpenCL acceleration** and **adaptive GL overlays**. Designed with extensibility in mind, it allows for seamless addition of new fractal types and colorization algorithms.
 
 ![Module Flow](module_flow.png)
@@ -16,36 +18,23 @@
 - OpenCL-capable GPU (AMD, NVIDIA, or Intel)
 - Dependencies: `pyopencl`, `PyQt5`, `numpy`
 
-## 📦 Installation
-Quickly set up your environment using the provided scripts:
-
-### Windows (PowerShell)
-```powershell
-./install.ps1
-```
-
-### Linux / macOS (Bash)
-```bash
-chmod +x install.sh
-./install.sh
-```
-
-## 🎮 Usage
-Once the environment is set up, launch the application:
+## 🚀 Quick Start
+Plasma Mandelbrot features a "Smart Launcher" that handles both environment setup and application launch automatically.
 
 ### Windows
-You can use the PowerShell script or the classic CMD batch file:
 ```powershell
-./PlasmaGPU.ps1
+./run.ps1
 # OR
-./PlasmaGPU.bat
+./run.bat
 ```
 
 ### Linux / macOS
 ```bash
-chmod +x PlasmaGPU.sh
-./PlasmaGPU.sh
+chmod +x run.sh
+./run.sh
 ```
+
+The script will automatically create a virtual environment, install missing dependencies, and launch the viewer.
 
 ## 📐 Project Structure
 - `math/`: OpenCL kernels (`.cl`) for fractal computation.
