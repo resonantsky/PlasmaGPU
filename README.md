@@ -31,11 +31,18 @@ chmod +x install.sh
 ```
 
 ## 🎮 Usage
-Once the environment is set up, run the application from the project root:
-```bash
-./venv/bin/python __main__.py
+Once the environment is set up, launch the application:
+
+### Windows
+```powershell
+./PlasmaGPU.ps1
 ```
-*(On Windows, use `.\venv\Scripts\python __main__.py`)*
+
+### Linux / macOS
+```bash
+chmod +x PlasmaGPU.sh
+./PlasmaGPU.sh
+```
 
 ## 📐 Project Structure
 - `math/`: OpenCL kernels (`.cl`) for fractal computation.
