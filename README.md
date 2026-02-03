@@ -33,9 +33,9 @@ chmod +x install.sh
 ## 🎮 Usage
 Once the environment is set up, run the application from the project root:
 ```bash
-./venv/bin/python -m __main__
+./venv/bin/python __main__.py
 ```
-*(On Windows, use `.\venv\Scripts\python -m __main__`)*
+*(On Windows, use `.\venv\Scripts\python __main__.py`)*
 
 ## 📐 Project Structure
 - `math/`: OpenCL kernels (`.cl`) for fractal computation.

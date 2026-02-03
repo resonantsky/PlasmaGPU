@@ -20,8 +20,8 @@ from PyQt6.QtOpenGLWidgets import QOpenGLWidget
 import OpenGL.GL as gl
 
 # Internal modules
-from .runtime.fractal_gl import FractalGLWidget
-from .runtime import PlasmaMandelbrotViewer
+from runtime.fractal_gl import FractalGLWidget
+from runtime import PlasmaMandelbrotViewer
 
 # Public API exposure
 __all__ = [

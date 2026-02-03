@@ -2,8 +2,8 @@ import sys
 from PyQt6.QtGui import QSurfaceFormat
 from PyQt6.QtWidgets import QApplication
 
-from .runtime import PlasmaMandelbrotViewer 
-from .ui.style_loader import load_stylesheet
+from runtime import PlasmaMandelbrotViewer 
+from ui.style_loader import load_stylesheet
 from colorama import init, Fore, Style
 
 def print_plasma_banner():

@@ -21,7 +21,7 @@ fi
 # Activate venv and install dependencies
 echo -e "\033[0;32mInstalling dependencies...\033[0m"
 source venv/bin/activate
-pip install pyopencl PyQt6 numpy colorama
+pip install pyopencl PyQt6 numpy colorama glfw PyOpenGL
 
 echo -e "\n\033[0;36m--- Installation Complete ---\033[0m"
 echo "To run the application, use: ./venv/bin/python3 -m __main__"
