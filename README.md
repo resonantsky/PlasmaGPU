@@ -34,8 +34,11 @@ chmod +x install.sh
 Once the environment is set up, launch the application:
 
 ### Windows
+You can use the PowerShell script or the classic CMD batch file:
 ```powershell
 ./PlasmaGPU.ps1
+# OR
+./PlasmaGPU.bat
 ```
 
 ### Linux / macOS
