@@ -1,0 +1,48 @@
+QWidget#ZContainer, QWidget#ControlContainer {
+    font-weight: bold;
+    color: #00BBFF;
+    border: 0px solid #000000;
+    padding:0px;
+    border-radius: 5px;
+}
+
+QDoubleSpinBox, QLineEdit, QSpinBox, QComboBox, QComboBox::down-arrow, QComboBox::drop-down {
+    font-weight: bold;
+    color: #00BBFF;
+    background-color: rgba(16, 16, 64, 192);
+    border: 1px solid #000000;
+    padding: 10px 10px;
+    border-radius: 5px;
+}
+
+QLabel {
+    font-weight: bold;
+    color: #00BBFF;
+    background-color: rgba(16, 16, 64, 192);
+    border: 1px solid #000000;
+    padding: 5px;
+    border-radius: 5px;
+    border: 0px solid #000000;
+}
+
+QPushButton {
+    background: #222244;
+    color: #00BBFF;
+    border: 1px solid #000000;
+    background-color: rgba(16, 16, 64, 192);
+    border-radius: 5px;
+    font-weight: bold;
+    padding: 10px 10px;
+}
+
+QCheckBox {
+    background: #222244;
+    color: #00BBFF;
+    background-color: rgba(16, 16, 64, 192);
+    border: 1px solid #000000;
+    border-radius: 4px;
+    font-weight: bold;
+    padding: 10px 10px;
+}
+
+

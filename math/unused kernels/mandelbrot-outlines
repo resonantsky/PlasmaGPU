@@ -1,0 +1,86 @@
+#ifdef cl_khr_fp64
+    #pragma OPENCL EXTENSION cl_khr_fp64 : enable
+#elif defined(cl_amd_fp64)
+    #pragma OPENCL EXTENSION cl_amd_fp64 : enable
+#endif
+
+
+#define ESCAPE_RADIUS2 4.0
+#define OUTLINE_RADIUS_THRESHOLD 0.05  // Controls thickness (smaller = thinner)
+
+__kernel void mandelbrot_kernel(
+    __global float* escape_values,
+    const double x_min,
+    const double y_min,
+    const double x_step,
+    const double y_step,
+    const int width,
+    const int height,
+    const int max_iterations,
+    const double zoom_depth,
+    const double z_real_offset,
+    const double z_imag_offset
+) {
+    int gid_x = get_global_id(0);
+    int gid_y = get_global_id(1);
+    if (gid_x >= width || gid_y >= height) return;
+
+    double c_real = x_min + gid_x * x_step;
+    double c_imag = y_min + gid_y * y_step;
+    double z_real = z_real_offset;
+    double z_imag = z_imag_offset;
+
+    int iteration = 0;
+    double zr2 = 0.0;
+    double zi2 = 0.0;
+
+    // Track escape distance at each step
+    double prev_zr2 = 0.0;
+    double prev_zi2 = 0.0;
+
+    while (zr2 + zi2 < ESCAPE_RADIUS2 && iteration < max_iterations) {
+        prev_zr2 = zr2;
+        prev_zi2 = zi2;
+
+        double temp = zr2 - zi2 + c_real;
+        z_imag = 2.0 * z_real * z_imag + c_imag;
+        z_real = temp;
+        zr2 = z_real * z_real;
+        zi2 = z_imag * z_imag;
+        iteration++;
+    }
+
+    // Smooth escape value (as before)
+    double norm = iteration;
+    if (iteration < max_iterations) {
+        double log_zn = log2(log2(zr2 + zi2));
+        norm = iteration - log2(log_zn) + 4.0;
+    }
+    norm = clamp(norm / max_iterations, 0.0, 1.0);
+
+    // Phase shift
+    double phase = log10(zoom_depth) - floor(log10(zoom_depth));
+    double t = fmod(norm + phase, 1.0);
+
+    // BLACK OUTLINE: Detect escape band at iteration boundary
+    double escape_distance = sqrt(zr2 + zi2) - 2.0;  // |z| - 2
+
+    // Check if we're just escaping (near the threshold)
+    if (iteration < max_iterations && iteration > 0) {
+        double prev_norm = sqrt(prev_zr2 + prev_zi2);
+        double prev_escape = prev_norm - 2.0;
+
+        // If current point escapes and previous point didn't, we're on the boundary
+        if (prev_escape < 0.0 && escape_distance >= 0.0) {
+            // Check if this is within the outline threshold
+            double dist_to_escape = escape_distance;
+            if (dist_to_escape < OUTLINE_RADIUS_THRESHOLD) {
+                // Apply black outline: set output to 0.0
+                t = 0.0;  // Black
+            }
+        }
+    }
+
+    // Store result (same as before)
+    escape_values[gid_y * width + gid_x] = (float)t;
+}
