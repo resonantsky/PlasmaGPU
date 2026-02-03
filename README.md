@@ -33,9 +33,9 @@ chmod +x install.sh
 ## 🎮 Usage
 Once the environment is set up, run the application from the project root:
 ```bash
-./venv/bin/python -m PlasmaMandelbrot
+./venv/bin/python -m __main__
 ```
-*(On Windows, use `.\venv\Scripts\python -m PlasmaMandelbrot`)*
+*(On Windows, use `.\venv\Scripts\python -m __main__`)*
 
 ## 📐 Project Structure
 - `math/`: OpenCL kernels (`.cl`) for fractal computation.

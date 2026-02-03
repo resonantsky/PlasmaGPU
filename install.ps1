@@ -20,7 +20,7 @@ if (-not (Test-Path "$ProjectRoot\venv")) {
 
 # Activate venv and install dependencies
 Write-Host "Installing dependencies..." -ForegroundColor Green
-& "$ProjectRoot\venv\Scripts\pip" install pyopencl PyQt5 numpy
+& "$ProjectRoot\venv\Scripts\pip" install pyopencl PyQt6 numpy colorama
 
 Write-Host "`n--- Installation Complete ---" -ForegroundColor Cyan
-Write-Host "To run the application, use: .\venv\Scripts\python -m PlasmaMandelbrot"
+Write-Host "To run the application, use: .\venv\Scripts\python -m __main__"
