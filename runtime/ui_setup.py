@@ -130,6 +130,11 @@ def setup_ui(self):
     self.smooth_zoom_checkbox.stateChanged.connect(self.toggle_smooth_zoom)
     control_layout.addWidget(self.smooth_zoom_checkbox)
 
+    self.auto_iter_checkbox = QCheckBox("Auto Iterations")
+    self.auto_iter_checkbox.setChecked(self.scaled_iterations_enabled)
+    self.auto_iter_checkbox.stateChanged.connect(self.toggle_scaled_iterations)
+    control_layout.addWidget(self.auto_iter_checkbox)
+
     main_layout.addWidget(control_container)
 
     # Create the widgets

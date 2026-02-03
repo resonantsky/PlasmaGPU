@@ -1,6 +1,6 @@
 from PyQt6.QtCore import QTimer
 from .fps import update_fps
-from .iteration import update_iterations_from_zoom
+from .iteration import update_iterations_from_zoom, adjust_iterations_by_scale
 from .render_fractal import render_fractal
 
 def apply_zoom_at_point(x_min, x_max, y_min, y_max, zoom_factor, center_x, center_y, base_width):
@@ -76,16 +76,17 @@ def animation_step(self):
     if self.scaled_iterations_enabled:
         update_iterations_from_zoom(self)
     elif self.adapt_iterations:
-        self.adjust_iterations_by_scale()
-        self.iterations_spinbox.setText(str(self.max_iterations))
+        adjust_iterations_by_scale(self)
     else:
+        # Manual mode: read from input box but don't force write unless empty or invalid
+        # This prevents breaking the user's typing experience
         try:
-            value = int(self.iterations_spinbox.text())
-            self.max_iterations = min(max(value, 10), 10000)
+            val_text = self.iterations_spinbox.text()
+            if val_text:
+                value = int(val_text)
+                self.max_iterations = min(max(value, 10), 10000)
         except ValueError:
             pass
-        self.iterations_spinbox.setText(str(self.max_iterations))
-        self.iterations_spinbox.setEnabled(True)
 
     # Trigger final render and frame increment
     render_fractal(self)

@@ -4,7 +4,7 @@ from .state import initialize_state
 from .opencl_setup import initialize_opencl
 from .ui_setup import setup_ui
 from .animation import setup_timers, animation_step
-from .iteration import update_scaled_iterations
+from .iteration import update_scaled_iterations, toggle_scaled_iterations
 from .mode_switch import update_color_params, set_color_mode, reset_view, toggle_smooth_zoom
 from .render_fractal import render_fractal
 
@@ -57,6 +57,7 @@ class PlasmaMandelbrotViewer(QMainWindow):
         self.set_color_mode = lambda index: set_color_mode(self, index)
         self.reset_view = lambda: reset_view(self)
         self.toggle_smooth_zoom = lambda state: toggle_smooth_zoom(self, state)
+        self.toggle_scaled_iterations = lambda state: toggle_scaled_iterations(self, state)
         
 
         # Optional if you want redraw separation
